@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Calendarpage from './Calendarpage';
+import Calendarpage from './components/Calendarpage';
 import Customerlist from "./components/Customerlist";
 import Traininglist from "./components/Traininglist";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { PeopleFill, CalendarFill, Trophy } from 'react-bootstrap-icons';
 
 function App() {
 
@@ -15,41 +13,32 @@ function App() {
     <Router>
     <div className="App">
 
-      {/* Material-UI toolbar */}
-
-    <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6">
-            Personal Trainer
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
       {/* Navbar bootstrap */}
 
 <div>
 <nav className="navbar navbar-expand-sm navbar-light bg-primary font-weight-bold">
+<a className="navbar-brand text-white" href="/">Personal Trainer</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
-      <li className="nav-item active">
-      <Link className="nav-link" to ="/components/Customerlist" >Customers <span className="sr-only">(current)</span></Link>{' '}
+      <li className="nav-item">
+      <Link className="nav-link" to ="/" > <PeopleFill />Customers </Link>{' '}
   </li>
   <li className="nav-item">
-      <Link className="nav-link" to ="/components/Traininglist" >Trainings </Link>{' '}
+      <Link className="nav-link" to ="/components/Traininglist" ><Trophy />Trainings</Link>{' '}
   </li>
   <li className="nav-item">
-      <Link className="nav-link" to ="/Calendarpage">Calendar </Link>{' '}
+      <Link className="nav-link" to ="/components/Calendarpage"><CalendarFill />Calendar</Link>{' '}
   </li>
   </ul>
   </div>
   </nav>
    </div> 
-      <Route exact path ="/components/Customerlist" component={Customerlist}/>
+      <Route exact path ="/" component={Customerlist}/>
       <Route path ="/components/Traininglist" component={Traininglist}/>
-      <Route path ="/Calendarpage" component={Calendarpage}/>
+      <Route path ="/components/Calendarpage" component={Calendarpage}/>
       </div>
    </Router>
 

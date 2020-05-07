@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import moment from 'moment';
-import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 
 
 export default function Traininglist () {
@@ -35,7 +36,12 @@ const columns = [
         filterable: false,
         Header: 'Actions',
         accessor: 'id',
-        Cell: row => <Button size = "medium" variant="text" color="secondary" endIcon={<DeleteIcon />} onClick={() => deleteTraining(row.value)}></Button>
+        Cell: row => 
+        <Tooltip title="Delete">
+        <IconButton >
+        <DeleteIcon fontSize="small" color="secondary" onClick={() => deleteTraining(row.value)}/>
+     </IconButton>
+       </Tooltip>
     },
 
     {

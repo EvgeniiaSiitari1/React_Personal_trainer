@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react';
+import '../App.css';
 import ReactTable from 'react-table';
-import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton';
 import 'react-table/react-table.css';
 import Addcustomer from './Addcustomer';
 import Editcustomer from './Editcustomer';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Addtraining from './Addtraining';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 export default function Customerlist () {
 const [customers, setCustomers] = useState([]);
@@ -50,22 +53,47 @@ fetch(link, {
  .catch (err=>console.error(err))
 }
 
+const saveTraining = (trainings, link) => {
+    fetch ('https://customerrest.herokuapp.com/api/trainings', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+        {    
+        'date':  new Date(trainings.date).toISOString(),    
+        'activity': trainings.activity,    
+        'duration': trainings.duration,    
+        'customer': link,
+        }
+    )
+    })
+    .then(response=> fetchData())
+    .catch(err => console.error(err))
+}
+
+
 const columns = [
 
     {   sortable: false,
         filterable: false,
         Header: 'Actions',
         accessor: 'links.0.href',
-        Cell: row => <Button size = "medium" variant="text" color="secondary" endIcon={<DeleteIcon />} onClick={() => deleteCustomer(row.value)}></Button>
-
+        Cell: row => 
+        <Tooltip title="Delete">
+             <IconButton >
+          <DeleteIcon fontSize="small" color="secondary" onClick={() => deleteCustomer(row.value)}/>
+        </IconButton>
+            </Tooltip>
     },
 
-    {  
-        sortable: false,
+     {  
+         sortable: false,
          filterable: false,
-         Cell: row => <Editcustomer updateCustomer={updateCustomer} customer={row.original}/> 
+     Cell: row => <Editcustomer updateCustomer={updateCustomer} customer={row.original}/>
        
-    },
+   },
+
     {
         Header: 'First name',
         accessor: 'firstname'
@@ -99,15 +127,21 @@ const columns = [
     {
         Header: 'City',
         accessor: 'city',
-    }
+    },
 
+    {  
+        Header: 'New training',   
+        sortable: false,
+        filterable: false,
+        Cell: row => <Addtraining saveTraining={saveTraining} sport={row.original}/>
+      
+    }
 ]
     return (
-            <div className="App">
-    
-     <h1>Customers</h1> 
-     <Addcustomer saveCustomer={saveCustomer} />
-            <ReactTable filterable={true} data={customers} columns = {columns}/>
+            <div>
+     <h1>Customers
+    <Addcustomer saveCustomer={saveCustomer}/></h1>
+    <ReactTable style ={{margin:10 }} filterable={true} data={customers} columns = {columns}/>
         </div>
     );
 }

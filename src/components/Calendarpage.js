@@ -7,40 +7,41 @@
   
   const localizer = momentLocalizer(moment);
 
-  class Calendarpage extends Component {
-    state = {
-      events: [
-        {
-          start: moment().toDate(),
-          end: moment()
-            .toDate(),
-          title: "training",
-          resource: ''
-        },
+  export default function CalendarPage () {
+    const [events, setEvents] = useState([{
+      title: '',
+      start: '',
+      end: ''
+  }]);
 
-        {
-          start: moment().toDate(),
-          end: moment()
-            .toDate(),
-          title: "training 2"
-        }
-      ]
-    };
-  
-    render() {
-      return (
-        <div className="App">
+  const getEvents = () => {
+      fetch("https://customerrest.herokuapp.com/gettrainings")
+          .then(response => response.json())
+          .then(responseData => {
+              return setEvents(
+                  responseData.map((data) => ({
+                      start: new Date(moment(data.date)),
+                      end: new Date(moment(data.date).add(data.duration, "minutes")),
+                      title: data.activity,
+
+                  }))
+              );
+          })
+          .then(err => console.error(err));
+
+  };
+
+  useEffect(() => {
+      getEvents();
+  }, []);
+
+  return (
+      <div className="App">
           <Calendar
-            localizer={localizer}
-            defaultDate={new Date()}
-            defaultView="month"
-            events={this.state.events}
-            style={{ height: "100vh" }}
+              localizer={localizer}
+              events={events}
+              style={{ height: "90vh" }}
           />
-        </div>
-      );
-    }
-  }
-  
-  export default Calendarpage;
-  
+      </div>
+  );
+}

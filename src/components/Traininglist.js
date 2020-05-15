@@ -38,9 +38,8 @@ const columns = [
         accessor: 'id',
         Cell: row => 
         <Tooltip title="Delete">
-        <IconButton >
-        <DeleteIcon fontSize="small" color="secondary" onClick={() => deleteTraining(row.value)}/>
-     </IconButton>
+        
+        <IconButton fontSize="small" color="secondary" onClick={() => deleteTraining(row.value)}><DeleteIcon/></IconButton>
        </Tooltip>
     },
 

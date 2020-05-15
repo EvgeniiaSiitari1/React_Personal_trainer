@@ -2569,11 +2569,6 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap-icons@^1.0.0-alpha3:
-  version "1.0.0-alpha3"
-  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.0.0-alpha3.tgz#413171e88b79315e712e6ab65601f64b1735d566"
-  integrity sha512-UO++43jb/qlWVsC31WkHOjFsTihJkSz0wngnUS+P1ImcCMTqDJqDHySld+hpkzxi+q6fL8iom7nfT3ApAxZ6cQ==
-
 bootstrap@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.4.1.tgz#8582960eea0c5cd2bede84d8b0baf3789c3e8b01"
@@ -9173,12 +9168,11 @@ react-big-calendar@^0.24.6:
     react-overlays "^2.0.0-0"
     uncontrollable "^7.0.0"
 
-react-bootstrap-icons@^1.0.1-alpha3:
-  version "1.0.1-alpha3"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.0.1-alpha3.tgz#796e8c6f38bcd01b721ff98f04452b939630c093"
-  integrity sha512-A8ZEUs4t/U1buv2mnEjo+xmo1jPodx3FotT+vLZmcr7YT+qtNNHaWpiEBWrFDuOEFuu0jUi/4tyhkfYM1LhQ+w==
+react-bootstrap-icons@^1.0.2-alpha3:
+  version "1.0.2-alpha3"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.0.2-alpha3.tgz#d83e031eb575936bf268494666f709bf70e45c3a"
+  integrity sha512-1SUMmGP5BVaU4nlZDct9KT1Tkr5AayOGArnK6J13HWZriy/YONFi3C1iVJMFeNXuwEQI+iXnMKURp/ydiMTCrA==
   dependencies:
-    bootstrap-icons "^1.0.0-alpha3"
     prop-types "^15.7.2"
 
 react-dev-utils@^10.2.1:

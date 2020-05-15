@@ -81,9 +81,7 @@ const columns = [
         accessor: 'links.0.href',
         Cell: row => 
         <Tooltip title="Delete">
-             <IconButton >
-          <DeleteIcon fontSize="small" color="secondary" onClick={() => deleteCustomer(row.value)}/>
-        </IconButton>
+             <IconButton fontSize="small" color="secondary" onClick={() => deleteCustomer(row.value)}><DeleteIcon/></IconButton>
             </Tooltip>
     },
 
